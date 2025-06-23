@@ -67,10 +67,10 @@ if __name__ == "__main__":
         init = time.time()
         split = f"s{i}"
         paths = {
-            'x_tr': f"../../../../DATA/{dataset}/{split}/X_train_tensor_{i-1}{norm}.npy",
-            'y_tr': f"../../../../DATA/{dataset}/{split}/y_train_tensor_{i-1}{norm}.csv",
-            'x_val': f"../../../../DATA/{dataset}/{split}/X_val_tensor_{i-1}{norm}.npy",
-            'y_val': f"../../../../DATA/{dataset}/{split}/y_val_tensor_{i-1}{norm}.csv"
+            'x_tr': f"../../../../DATA/{dataset}/s{split}/X_train_tensor_{i-1}{norm}.npy",
+            'y_tr': f"../../../../DATA/{dataset}/s{split}/y_train_tensor_{i-1}{norm}.csv",
+            'x_val': f"../../../../DATA/{dataset}/s{split}/X_val_tensor_{i-1}{norm}.npy",
+            'y_val': f"../../../../DATA/{dataset}/s{split}/y_val_tensor_{i-1}{norm}.csv"
         }
         X_test = np.load(f"../../../../DATA/{dataset}/s" + str(i) + "/X_test_tensor_" + norm + ".npy")
         y_test = pd.read_csv(f"../../../../DATA/{dataset}/s" + str(i) + "/y_test_tensor_" + norm + ".csv")

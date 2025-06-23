@@ -3,11 +3,13 @@
 Óscar Escudero-Arnanz, Cristina Soguero-Ruiz, Joaquín Álvarez-Rodríguez, Antonio G. Marques
 
 ## Abstract
-**Objective:** Many real problems in healthcare involve Multivariate Time Series (MTS) as input and Time Series (TS) as output. A key example is predicting Multidrug Resistance (MDR) acquisition in Intensive Care Unit (ICU) patients over time. To enhance interpretability, we propose novel eXplainable Artificial Intelligence (XAI) methods for "MTS-to-TS" inference architectures, enabling time-resolved risk assessments critical for clinical decision-making.
-**Methods:** We introduce XAI techniques for "MTS-to-TS" inference, including i) Irregular Time SHapley Additive exPlanation (IT-SHAP), a post-hoc method extending TimeSHAP to TS outputs for time-resolved feature importance; ii) Hadamard Attention, an intrinsic mechanism capturing key temporal dependencies; and iii) Causal Conditional Mutual Information-based feature selection, a pre-hoc approach identifying informative variables before training.
-**Results:** We evaluate our approach using 16 years of ICU data from the University Hospital of Fuenlabrada in Spain, covering 71 variables and more than 3,000 admissions. IT-SHAP identifies critical MDR risk factors, such as early antibiotic administration (PEN, SUL) and bacterial cultures (Staphylococcus, Pseudomonas), validated by clinical experts. We also demonstrate generalizability in circulatory failure prediction.
-**Conclusion:** Our XAI framework improves interpretability in ``MTS-to-TS'' predictions, with IT-SHAP proving most effective, especially with architectures using attention mechanisms. It enhances explainability in clinical decision-making, identifying key MDR risk factors and generalizing to other ICU conditions.
-**Significance:** By integrating real-time, explainable MDR risk predictions into Electronic Health Record systems, our approach enables timely interventions, improved antimicrobial stewardship, and better infection control strategies. Its scalability to other ICU conditions highlights its potential for broader clinical adoption.
+**Objective:** Many healthcare problems involve complex patient trajectories represented as Multivariate Time Series (MTS), with predictions often coming as Time Series (TS) outputs. Despite recent advances, these "MTS-to-TS" inference tasks remain challenging due to data irregularity, temporal dependencies, and the need for clinical explainability. To address these demands, we propose novel eXplainable Artificial Intelligence (XAI) methods for "MTS-to-TS" architectures, enabling tracking of patient evolution and identification of key variable patterns associated with adverse outcomes. We evaluate our approach on private ICU data from the University Hospital of Fuenlabrada (UHF) for Multidrug Resistance (MDR) prediction and the public HiRID dataset (circulatory failure).
+**Methods:** We introduce three XAI techniques: i) Irregular Time SHapley Additive exPlanation (IT-SHAP), a post-hoc extension of TimeSHAP to TS outputs; ii) Hadamard Attention, an intrinsic mechanism for capturing temporal dependencies; and iii) Causal Conditional Mutual Information, a pre-hoc approach for feature selection.
+**Results:** MDR prediction achieved highest performance with a GRU using Hadamard Attention (ROC-AUC=0.783 ± 0.023), while circulatory failure was best predicted with LSTM (ROC--AUC of 0.9970 ± 1.6e^-3). In terms of explainability, IT-SHAP uncovered clinically relevant risk factors—early antibiotic use and bacterial cultures—later validated by UHF clinicians.
+**Conclusion:** Our framework offers temporal explainability in ``MTS-to-TS'' architectures, allowing clinicians to trace disease trajectories and understand the contribution of each variable at each time step.
+**Significance:** Integrating explainable MDR risk predictions into EHR systems enables early interventions, improved antimicrobial stewardship, and infection control. The framework’s scalability to other ICU challenges underscores its clinical impact.
+
+> Submission Status: This manuscript has been submitted to IEEE Transactions on Biomedical Engineering and is currently under review.
 
 ## Project Structure
 
@@ -41,6 +43,11 @@ Contains the data used for the experiments, organized into subfolders for each d
         - **`pos_hoc.py`**: Recurrent Neural Networks (RNN), including Vanilla RNN, GRU, and LSTM
           
         - **`intrinsec.py`**: RNN-based models with Hadamard attention mechanism
+
+    - **`non_rnns_architectures/`**
+        - **`transformer_poshoc.py`**: Transformer 
+          
+        - **`transformer_intrinsec.py`**: Transformer model with Hadamard attention mechanism 
 
     - **`utils.py`**: Utility functions, including the Temporal Balance Binary Cross Entropy loss function for handling imbalance
 

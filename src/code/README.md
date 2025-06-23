@@ -34,6 +34,11 @@ This subdirectory contains the implementations of various RNN-based models used 
 - #### **`intrinsec.py`**
     Builds on the RNN architectures in `post_hoc.py` by incorporating the **Hadamard attention mechanism** (defined in `att_method.py`). This addition highlights important features and time steps during inference, offering intrinsic interpretability for temporal data
 
+
+### **`rnns_architectures/`**
+
+This subdirectory contains the implementations of non-RNN-based models (i.e. Transformer) used in the experiments
+
 ---
 
 ### **`utils.py`**

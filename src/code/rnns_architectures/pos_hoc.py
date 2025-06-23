@@ -216,7 +216,7 @@ def myCVGridParallel(hyperparameters, dropout, lr_scheduler, layers, adjustment_
     """
     bestHyperparameters = {}
     bestMetricDev = np.inf
-
+    print('INSIDE THE GRIDSEARCH')
     num_cores = multiprocessing.cpu_count()
     results = Parallel(n_jobs=8)(
         delayed(evaluate_combination)(k, l, m, a, b, hyperparameters, dropout, layers, lr_scheduler, adjustment_factor, activation, seed, split, norm, n_time_steps)
